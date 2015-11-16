@@ -1,21 +1,33 @@
 {
   "name": "insolent-waffle",
-  "version": "0.0.0",
   "description": "CS 360 Project",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "version": "0.0.0",
+  "private": true,
   "repository": {
     "type": "git",
     "url": "https://github.com/dcravenus/insolent-waffle.git"
   },
-  "author": "",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/dcravenus/insolent-waffle/issues"
   },
+  "scripts": {
+    "test": "mocha -b",
+    "start": "sh start.sh",
+    "gulp": "gulp"
+  },
   "dependencies": {
-    "express": "^4.13.3"
+    "body-parser": "~1.10.1",
+    "cookie-parser": "~1.3.3",
+    "debug": "~2.1.1",
+    "express": "~4.10.6",
+    "history": "^1.13.1",
+    "jade": "~1.8.2",
+    "jsx-loader": "^0.13.2",
+    "mongoose": "^4.2.5",
+    "morgan": "~1.5.1",
+    "react": "^0.14.2",
+    "react-dom": "^0.14.2",
+    "react-router": "^1.0.0",
+    "serve-favicon": "~2.2.0"
   }
 }
