@@ -1,0 +1,21 @@
+{
+  "name": "insolent-waffle",
+  "version": "0.0.0",
+  "description": "CS 360 Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dcravenus/insolent-waffle.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dcravenus/insolent-waffle/issues"
+  },
+  "dependencies": {
+    "express": "^4.13.3"
+  }
+}
