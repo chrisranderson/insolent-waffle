@@ -1,6 +1,6 @@
 var React = require('react')
 var ReactDOM = require('react-dom')
-var {Router, Link, Route} = require('react-router')
+var {Router, Link, Route, IndexRoute} = require('react-router')
 var Navbar = require('./Navbar')
 var Home = require('./pages/Home')
 
@@ -8,7 +8,7 @@ var Home = require('./pages/Home')
 var App = React.createClass({
   render: function() {
     return (
-        <div>
+        <div className='blue'>
             <Navbar/>
             {this.props.children}
         </div>
@@ -21,10 +21,10 @@ var App = React.createClass({
 var routes = (
       <Router>
         <Route name="app" path="/" component={App}>
-          <Route name="page" path="/" component={Home} />
+          <IndexRoute component={Home} />
           <Route path="*" component={Home}/>
         </Route>
       </Router>
 );
 
-ReactDOM.render(routes, document.body);
+ReactDOM.render(routes, document.getElementById('content'));
