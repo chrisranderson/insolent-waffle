@@ -6,7 +6,6 @@ var Navbar = React.createClass({
 
     render: function() {
         return (
-
             <div>
                 <nav className="navbar navbar-default" role="navigation">
                     <div className="container">
