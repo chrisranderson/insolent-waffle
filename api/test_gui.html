@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+
+<body>
+<h1>API GUI </h1>
+
+<h2>Register User</h2>
+<label>Username: </label><input id='register-username' type='text'></input><br>
+<label>Name: </label><input id='register-name' type='text'></input><br>
+<label>Password: </label><input id='register-password' type='text'></input><br>
+
+<button onclick="registerUser()">Register User</button>
+
+<h2>Login User</h2>
+<label>Username: </label><input id='login-username' type='text'></input><br>
+<label>Password: </label><input id='login-password' type='text'></input><br>
+
+<button onclick="loginUser()">Login User</button>
+
+<h2>Get Items For User</h2>
+<label>Username: </label><input id='get-items-username' type='text'></input><br>
+<label>Token: </label><input id='get-items-token' type='text'></input><br>
+
+<button onclick="getItemsForUser()">Get Items For User</button>
+
+<h2>Add Item</h2>
+
+<h2>Get Item</h2>
+
+<h2>Update Item</h2>
+
+<h2>Delete Item</h2>
+
+<script>
+
+var registerUser = function() {
+    var url = 'http://localhost:3000/api/users/register';
+    var username = $('#register-username').val();
+    var name = $('#register-name').val();
+    var password = $('#register-password').val();
+
+    console.log('Register User');
+    $.ajax({
+        url : url,
+        type: 'POST',
+        data: {username: username, name: name, password: password}
+    }).done(function(data){
+        console.log(data);
+    });
+};
+
+var loginUser = function() {
+    var url = 'http://localhost:3000/api/users/login';
+    var username = $('#login-username').val();
+    var password = $('#login-password').val();
+
+    console.log('Login User');
+    $.ajax({
+        url : url,
+        type: 'POST',
+        data: {username: username, password: password}
+    }).done(function(data){
+        console.log(data);
+    });
+};
+
+var getItemsForUser = function() {
+    var url = 'http://localhost:3000/api/items';
+    var username = $('#get-items-username').val();
+    var token = $('#get-items-token').val();
+
+    console.log('Get Items For User');
+    $.ajax({
+        url : url,
+        type: 'GET',
+        headers: {"Authorization": token}
+    }).done(function(data){
+        console.log(data);
+    });
+};
+
+var addItem = function() {
+
+};
+
+var getItem = function() {
+
+};
+
+var updateItem = function() {
+
+};
+
+var deleteItem = function() {
+
+};
+
+</script>
+
+</body>
+</html>
