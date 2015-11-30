@@ -27,6 +27,21 @@
     box-shadow: inset 0px 0px 15px rgba(190, 219, 57, 0.32);
 }
 
+.search-result {
+    width: 100%;
+    background: #6F8318;
+    height: 49px;
+    font-size: 19px;
+    padding: 10px;
+    color: #BEBEBE;
+    border-bottom: solid 1px #9EB62F;
+}
+
+.highlighted-character {
+    color: white;
+    font-weight: bold;
+}
+
 /* MISC */
 
 ::-webkit-input-placeholder {color: rgba(255, 255, 255, 0.5); font-style: italic; } :-moz-placeholder { /* Firefox 18- */ color: rgba(255, 255, 255, 0.5); font-style: italic; } ::-moz-placeholder {  /* Firefox 19+ */ color: rgba(255, 255, 255, 0.5); font-style: italic; } :-ms-input-placeholder {color: rgba(255, 255, 255, 0.5); font-style: italic; }

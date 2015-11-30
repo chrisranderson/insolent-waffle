@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var Exhibit = require('./models/Exhibit');
-var ExhibitPage = require('./models/ExhibitPage');
+var Collection = require('./models/Collection');
 
 mongoose.connect('mongodb://localhost/insolent-waffle');
 var db = mongoose.connection;
@@ -16,14 +16,14 @@ var cssStuff = [':active', 'additive-symbols', '::after (:after)', 'align-conten
 var allPages = htmlElements.concat(cssStuff);
 
 htmlElements.forEach(function (tag) {
-    new ExhibitPage({
+    new Collection({
         title: tag,
         category: 'html'
     }).save(console.log.bind(null, tag));
 })
 
 cssStuff.forEach(function (cssThing) {
-    new ExhibitPage({
+    new Collection({
         title: cssThing,
         category: 'css'
     }).save(console.log.bind(null, cssThing));

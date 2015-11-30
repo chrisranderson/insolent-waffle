@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var exhibitPageSchema = new Schema({
+var CollectionSchema = new Schema({
     title: String,
     summary: {
         type: String, 
@@ -14,6 +14,6 @@ var exhibitPageSchema = new Schema({
     }]
 });
 
-var ExhibitPage = mongoose.model('ExhibitPage', exhibitPageSchema);
+var Collection = mongoose.model('Collection', CollectionSchema);
 
-module.exports = ExhibitPage;
+module.exports = Collection;

@@ -27,7 +27,7 @@ module.exports = {
 
     resolve: {
         // so you don't have to put "require('../../../../utility/Component')"
-        modulesDirectories: ['components','utility','../node_modules']
+        modulesDirectories: ['components','utility','../node_modules', '.']
     },
 
     // Use this if you're tired of slow compile times from webpack.
