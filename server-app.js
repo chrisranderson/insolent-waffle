@@ -9,7 +9,7 @@ var app = express();
 // DB setup
 
 var mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost/express-react-todo')
+mongoose.connect('mongodb://localhost/insolent-waffle')
 // asdfsa
 //app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));

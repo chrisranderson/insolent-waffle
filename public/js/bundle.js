@@ -24534,14 +24534,21 @@
 	var Home = React.createClass({displayName: "Home",
 	
 	    render: function() {
-	        return (
+	        var rowMargin = {
+	            marginBottom: 30
+	        }
 	
+	        return (
 	            React.createElement("div", {className: "container white-text"}, 
-	                React.createElement("h1", null, "Welcome to Web Exhibit!"), 
-	                React.createElement("div", {className: "h1-subtitle"}, 
-	                    "An (eventually) comprehensive gallery of HTML and CSS examples, for your learning pleasure."
+	                React.createElement("div", {className: "row", style: rowMargin}, 
+	                    React.createElement("h1", null, "Welcome to Web Exhibit!"), 
+	                    React.createElement("div", {className: "h1-subtitle"}, 
+	                        "An (eventually) comprehensive gallery of HTML and CSS examples, for your learning pleasure."
+	                    )
 	                ), 
-	                React.createElement(Searchbar, null)
+	                React.createElement("div", {className: "row"}, 
+	                    React.createElement(Searchbar, null)
+	                )
 	            )
 	
 	        );
@@ -24558,14 +24565,30 @@
 	var React  = __webpack_require__(2);
 	
 	var Searchbar = React.createClass({displayName: "Searchbar",
+	    getInitialState: function () {
+	        return {
+	            value: ''
+	        }
+	    },
+	
+	    onChange: function (event) {
+	        this.setState({
+	            value: event.target.value
+	        })
+	    },
 	
 	    render: function() {
+	
 	        return (
-	
-	            React.createElement("div", null, 
-	                "An actual searchbar should be here instead."
+	            React.createElement("div", {className: "col-md-offset-2 col-md-8"}, 
+	                React.createElement("label", {htmlFor: "query"}, "Search for any HTML element or CSS attribute"), 
+	                React.createElement("br", null), 
+	                React.createElement("input", {className: "searchbar", name: "query", 
+	                    type: "text", 
+	                    onChange: this.onChange, 
+	                    placeholder: "e.g. \"background\" or \"input\"", 
+	                    value: this.state.value})
 	            )
-	
 	        );
 	    }
 	});

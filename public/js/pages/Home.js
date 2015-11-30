@@ -5,14 +5,21 @@ var Searchbar = require('./Searchbar');
 var Home = React.createClass({
 
     render: function() {
-        return (
+        var rowMargin = {
+            marginBottom: 30
+        }
 
+        return (
             <div className="container white-text">
-                <h1>Welcome to Web Exhibit!</h1>
-                <div className="h1-subtitle">
-                    An (eventually) comprehensive gallery of HTML and CSS examples, for your learning pleasure.
+                <div className="row" style={rowMargin}>
+                    <h1>Welcome to Web Exhibit!</h1>
+                    <div className="h1-subtitle">
+                        An (eventually) comprehensive gallery of HTML and CSS examples, for your learning pleasure.
+                    </div>
                 </div>
-                <Searchbar />
+                <div className="row">
+                    <Searchbar />
+                </div>
             </div>
 
         );
