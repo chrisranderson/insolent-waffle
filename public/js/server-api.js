@@ -1,6 +1,10 @@
 var api = {
     getCollections: function (cb) {
-        $.get('./collections', cb)
+        $.get('/api/collections', cb)
+    },
+
+    getCollection: function(id, cb) {
+        $.get(`/api/collections/${id}`, cb)
     }
 }
 

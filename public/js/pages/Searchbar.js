@@ -34,7 +34,7 @@ var Searchbar = React.createClass({
 
         return (
             <div className="col-md-offset-2 col-md-8">
-                <label htmlFor='query'>Search for any HTML element or CSS attribute</label>
+                <label className='search-label' htmlFor='query'>Search for any HTML element or CSS attribute</label>
                 <br/>
                 <input className="searchbar" name='query' 
                     type='text' 

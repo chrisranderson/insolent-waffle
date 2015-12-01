@@ -4,6 +4,15 @@
 .yellow {background: #ffe11a; }
 .orange {background: #fd7400; }
 
+* {
+    box-sizing: border-box;
+    font-family: 'Source Sans Pro'
+}
+
+.container {
+    color: white;
+}
+
 /* HOME PAGE */
 
 .white-text {
@@ -13,6 +22,11 @@
 .h1-subtitle {
     font-size: 20px;
     font-style: italic;
+}
+
+.search-label {
+    font-size: 22px;
+    font-weight: 100;
 }
 
 .searchbar {
@@ -28,6 +42,7 @@
 }
 
 .search-result {
+    display: block;
     width: 100%;
     background: #6F8318;
     height: 49px;
@@ -35,6 +50,12 @@
     padding: 10px;
     color: #BEBEBE;
     border-bottom: solid 1px #9EB62F;
+}
+
+.search-result:hover {
+    background: #788E16;
+    color: inherit;
+    text-decoration: none;
 }
 
 .highlighted-character {

@@ -22,7 +22,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 ////////////////////
 ////////////////////
 
-app.use('/collections', require('./routes/collections'))
+app.use('/api/collections', require('./routes/collections'))
 
 ////////////////////
 ////////////////////

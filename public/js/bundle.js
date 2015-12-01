@@ -54,8 +54,9 @@
 	/** @jsx React.DOM */var React = __webpack_require__(2)
 	var ReactDOM = __webpack_require__(159)
 	var $__0=     __webpack_require__(160),Router=$__0.Router,Link=$__0.Link,Route=$__0.Route,IndexRoute=$__0.IndexRoute
-	var Navbar = __webpack_require__(211)
-	var Home = __webpack_require__(212)
+	var Navbar = __webpack_require__(211);
+	var Home = __webpack_require__(212);
+	var Collection = __webpack_require__(218);
 	
 	
 	var App = React.createClass({displayName: "App",
@@ -69,12 +70,13 @@
 	  }
 	});
 	
-	
-	// Run the routes
+	// a
+	// Run the routes 
 	var routes = (
 	      React.createElement(Router, null, 
 	        React.createElement(Route, {name: "app", path: "/", component: App}, 
 	          React.createElement(IndexRoute, {component: Home}), 
+	          React.createElement(Route, {path: "collections/:id", component: Collection}), 
 	          React.createElement(Route, {path: "*", component: Home})
 	        )
 	      )
@@ -24541,7 +24543,7 @@
 	        return (
 	            React.createElement("div", {className: "container white-text"}, 
 	                React.createElement("div", {className: "row", style: rowMargin}, 
-	                    React.createElement("h1", null, "Welcome to Web Exhibit!"), 
+	                    React.createElement("h1", null, "Web Exhibit"), 
 	                    React.createElement("div", {className: "h1-subtitle"}, 
 	                        "An (eventually) comprehensive gallery of HTML and CSS examples, for your learning pleasure."
 	                    )
@@ -24597,7 +24599,7 @@
 	
 	        return (
 	            React.createElement("div", {className: "col-md-offset-2 col-md-8"}, 
-	                React.createElement("label", {htmlFor: "query"}, "Search for any HTML element or CSS attribute"), 
+	                React.createElement("label", {className: "search-label", htmlFor: "query"}, "Search for any HTML element or CSS attribute"), 
 	                React.createElement("br", null), 
 	                React.createElement("input", {className: "searchbar", name: "query", 
 	                    type: "text", 
@@ -24627,7 +24629,11 @@
 
 	/** @jsx React.DOM */var api = {
 	    getCollections: function (cb) {
-	        $.get('./collections', cb)
+	        $.get('/api/collections', cb)
+	    },
+	
+	    getCollection: function(id, cb) {
+	        $.get(("/api/collections/" + id), cb)
 	    }
 	}
 	
@@ -25146,6 +25152,7 @@
 
 	/** @jsx React.DOM */'use strict';
 	var React  = __webpack_require__(2);
+	var $__0=  __webpack_require__(160),Link=$__0.Link;
 	var _ = __webpack_require__(217);
 	
 	var SearchResults = React.createClass({displayName: "SearchResults",
@@ -25156,7 +25163,11 @@
 	            React.createElement("div", null, 
 	                this.props.results.slice(0, 10).map(function(result)  {
 	                    return (
-	                        React.createElement("div", {className: "search-result"}, " ", highlightMatches(result.title, this.props.query), " ")
+	                        React.createElement(Link, {
+	                            to: ("/collections/" + result._id), 
+	                            className: "search-result"}, 
+	                            highlightMatches(result.title, this.props.query)
+	                        )
 	                    )
 	                }.bind(this))
 	            )
@@ -25168,7 +25179,7 @@
 	function highlightMatches(sample, query) {
 	    var charactersToMatch = _.uniq(query.split(''));
 	
-	    var output =  sample.split('').map(function(character, index) {
+	    var output = sample.split('').map(function(character, index) {
 	        return _.contains(charactersToMatch, character)? 
 	                React.createElement("span", {className: "highlighted-character", key: index}, character) : 
 	                React.createElement("span", {key: index}, character)
@@ -26732,6 +26743,53 @@
 	  }
 	}.call(this));
 
+
+/***/ },
+/* 218 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/** @jsx React.DOM */'use strict';
+	var React  = __webpack_require__(2);
+	var api = __webpack_require__(214)
+	
+	var Collection = React.createClass({displayName: "Collection",
+	    getInitialState: function () {
+	        return {
+	            title: 'Loading...',
+	            subtitle: '',
+	            exhibits: []
+	        }
+	    },
+	
+	    componentDidMount: function () {
+	        api.getCollection(this.props.params.id, function(collection)  {
+	            this.setState({
+	                title: collection.title,
+	                subtitle: collection.summary
+	            })
+	        }.bind(this));
+	
+	        api.getExhibits(this.props.params.id, function(exhibits)  {
+	            this.setState({
+	                exhibits: exhibits
+	            })
+	        }.bind(this));
+	    },
+	
+	    render: function() {
+	        return (
+	
+	            React.createElement("div", {className: "container"}, 
+	                React.createElement("h1", null, this.state.title), 
+	                React.createElement("div", {className: "collection-subtitle"}, this.state.subtitle), 
+	                "Collection page?"
+	            )
+	
+	        );
+	    }
+	});
+	
+	module.exports = Collection;
 
 /***/ }
 /******/ ]);
