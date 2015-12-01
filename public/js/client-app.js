@@ -3,6 +3,7 @@ var ReactDOM = require('react-dom')
 var {Router, Link, Route, IndexRoute} = require('react-router')
 var Navbar = require('./Navbar')
 var Home = require('./pages/Home')
+var HTMLEditor = require('./HTMLEditor')
 
 
 var App = React.createClass({
@@ -10,6 +11,7 @@ var App = React.createClass({
     return (
         <div className='blue'>
             <Navbar/>
+            <HTMLEditor/>
             {this.props.children}
         </div>
     );
