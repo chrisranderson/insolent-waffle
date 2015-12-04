@@ -5,7 +5,6 @@ var Navbar = require('./Navbar');
 var Home = require('./pages/Home');
 var Collection = require('./pages/Collection');
 
-
 var App = React.createClass({
   render: function() {
     return (
@@ -17,8 +16,7 @@ var App = React.createClass({
   }
 });
 
-// a
-// Run the routes 
+// Run the routes
 var routes = (
       <Router>
         <Route name="app" path="/" component={App}>

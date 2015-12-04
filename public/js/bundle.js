@@ -58,7 +58,6 @@
 	var Home = __webpack_require__(212);
 	var Collection = __webpack_require__(218);
 	
-	
 	var App = React.createClass({displayName: "App",
 	  render: function() {
 	    return (
@@ -70,8 +69,7 @@
 	  }
 	});
 	
-	// a
-	// Run the routes 
+	// Run the routes
 	var routes = (
 	      React.createElement(Router, null, 
 	        React.createElement(Route, {name: "app", path: "/", component: App}, 

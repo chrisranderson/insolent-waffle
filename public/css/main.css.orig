@@ -78,15 +78,17 @@
     font-weight: bold;
 }
 
+<<<<<<< HEAD
 /* EXHIBIT PAGE */
 
 
-
+=======
 #preview {
     width: 100%;
     min-height: 300px;
     background-color: white;
 }
+>>>>>>> d1764498c558356ba0f1260bf2a5b1716146ace7
 
 /* MISC */
 
