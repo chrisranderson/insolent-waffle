@@ -4,21 +4,21 @@ var {Router, Link, Route, IndexRoute} = require('react-router')
 var Navbar = require('./Navbar');
 var Home = require('./pages/Home');
 var Collection = require('./pages/Collection');
-
+var HTMLEditor = require('./HTMLEditor');
 
 var App = React.createClass({
   render: function() {
     return (
         <div className='blue'>
             <Navbar/>
+            <HTMLEditor/>
             {this.props.children}
         </div>
     );
   }
 });
 
-// a
-// Run the routes 
+// Run the routes
 var routes = (
       <Router>
         <Route name="app" path="/" component={App}>
