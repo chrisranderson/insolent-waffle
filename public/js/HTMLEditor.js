@@ -61,7 +61,7 @@ var HTMLEditor = React.createClass({
                     <CodeMirror id="editor" value={this.state.code} onChange={this.updateCode} options={options} />
                   </div>
                   <div className="col-md-6">
-                    <iframe id="preview"></iframe>
+                    <iframe id="preview" sandbox="allow-same-origin"></iframe>
                   </div>
               </div>
             </div>

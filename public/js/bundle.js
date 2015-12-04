@@ -26811,7 +26811,7 @@
 	                    React.createElement(CodeMirror, {id: "editor", value: this.state.code, onChange: this.updateCode, options: options})
 	                  ), 
 	                  React.createElement("div", {className: "col-md-6"}, 
-	                    React.createElement("iframe", {id: "preview"})
+	                    React.createElement("iframe", {id: "preview", sandbox: "allow-same-origin"})
 	                  )
 	              )
 	            )
