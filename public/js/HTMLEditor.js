@@ -55,9 +55,15 @@ var HTMLEditor = React.createClass({
         };
 
         return(
-            <div>
-                <CodeMirror id="editor" value={this.state.code} onChange={this.updateCode} options={options} />
-                <iframe id="preview"></iframe>
+            <div className="container-fluid">
+              <div className="row">
+                  <div className="col-md-6">
+                    <CodeMirror id="editor" value={this.state.code} onChange={this.updateCode} options={options} />
+                  </div>
+                  <div className="col-md-6">
+                    <iframe id="preview"></iframe>
+                  </div>
+              </div>
             </div>
         )
     }

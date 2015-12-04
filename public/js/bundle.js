@@ -56,7 +56,7 @@
 	var $__0=     __webpack_require__(160),Router=$__0.Router,Link=$__0.Link,Route=$__0.Route,IndexRoute=$__0.IndexRoute
 	var Navbar = __webpack_require__(211)
 	var Home = __webpack_require__(212)
-	var HTMLEditor = __webpack_require__(226)
+	var HTMLEditor = __webpack_require__(218)
 	
 	
 	var App = React.createClass({displayName: "App",
@@ -26736,7 +26736,85 @@
 
 
 /***/ },
-/* 218 */,
+/* 218 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/** @jsx React.DOM */'use strict';
+	var React  = __webpack_require__(2);
+	var $__0=  __webpack_require__(160),Link=$__0.Link
+	
+	var CodeMirror = __webpack_require__(219);
+	__webpack_require__(222);
+	__webpack_require__(223);
+	__webpack_require__(224);
+	__webpack_require__(225);
+	
+	var HTMLEditor = React.createClass({displayName: "HTMLEditor",
+	    getInitialState: function() {
+	        return {
+	            code:
+	                ("<html style=\"color: green\">\n                  <!-- this is a comment -->\n                  <head>\n                    <title>Mixed HTML Example</title>\n                    <style type=\"text/css\">\n                      h1 {font-family: comic sans; color: #f0f;}\n                      div {background: yellow !important;}\n                      body {\n                        max-width: 50em;\n                        margin: 1em 2em 1em 5em;\n                      }\n                    </style>\n                  </head>\n                  <body>\n                    <h1>Mixed HTML Example</h1>\n                    <script>\n                      function jsFunc(arg1, arg2) {\n                        if (arg1 && arg2) document.body.innerHTML = \"achoo\";\n                      }\n                    </script>\n                  </body>\n                </html>\n                "
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	)
+	        };
+	    },
+	    updateCode: function(newCode) {
+	        this.setState({
+	            code: newCode
+	        });
+	
+	        var previewFrame = document.getElementById('preview');
+	        var preview =  previewFrame.contentDocument ||  previewFrame.contentWindow.document;
+	        preview.open();
+	        preview.write(newCode);
+	        preview.close();
+	    },
+	    render: function() {
+	        var options = {
+	            lineNumbers: true,
+	            mode: "htmlmixed"
+	        };
+	
+	        return(
+	            React.createElement("div", {className: "container-fluid"}, 
+	              React.createElement("div", {className: "row"}, 
+	                  React.createElement("div", {className: "col-md-6"}, 
+	                    React.createElement(CodeMirror, {id: "editor", value: this.state.code, onChange: this.updateCode, options: options})
+	                  ), 
+	                  React.createElement("div", {className: "col-md-6"}, 
+	                    React.createElement("iframe", {id: "preview"})
+	                  )
+	              )
+	            )
+	        )
+	    }
+	});
+	
+	
+	module.exports = HTMLEditor;
+
+
+/***/ },
 /* 219 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -37866,79 +37944,6 @@
 	
 	  CodeMirror.defineMIME("text/html", "htmlmixed");
 	});
-
-
-/***/ },
-/* 226 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/** @jsx React.DOM */'use strict';
-	var React  = __webpack_require__(2);
-	var $__0=  __webpack_require__(160),Link=$__0.Link
-	
-	var CodeMirror = __webpack_require__(219);
-	__webpack_require__(222);
-	__webpack_require__(223);
-	__webpack_require__(224);
-	__webpack_require__(225);
-	
-	var HTMLEditor = React.createClass({displayName: "HTMLEditor",
-	    getInitialState: function() {
-	        return {
-	            code:
-	                ("<html style=\"color: green\">\n                  <!-- this is a comment -->\n                  <head>\n                    <title>Mixed HTML Example</title>\n                    <style type=\"text/css\">\n                      h1 {font-family: comic sans; color: #f0f;}\n                      div {background: yellow !important;}\n                      body {\n                        max-width: 50em;\n                        margin: 1em 2em 1em 5em;\n                      }\n                    </style>\n                  </head>\n                  <body>\n                    <h1>Mixed HTML Example</h1>\n                    <script>\n                      function jsFunc(arg1, arg2) {\n                        if (arg1 && arg2) document.body.innerHTML = \"achoo\";\n                      }\n                    </script>\n                  </body>\n                </html>\n                "
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	)
-	        };
-	    },
-	    updateCode: function(newCode) {
-	        this.setState({
-	            code: newCode
-	        });
-	
-	        var previewFrame = document.getElementById('preview');
-	        var preview =  previewFrame.contentDocument ||  previewFrame.contentWindow.document;
-	        preview.open();
-	        preview.write(newCode);
-	        preview.close();
-	    },
-	    render: function() {
-	        var options = {
-	            lineNumbers: true,
-	            mode: "htmlmixed"
-	        };
-	
-	        return(
-	            React.createElement("div", null, 
-	                React.createElement(CodeMirror, {id: "editor", value: this.state.code, onChange: this.updateCode, options: options}), 
-	                React.createElement("iframe", {id: "preview"})
-	            )
-	        )
-	    }
-	});
-	
-	
-	module.exports = HTMLEditor;
 
 
 /***/ }
