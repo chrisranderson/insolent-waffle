@@ -7,8 +7,8 @@ var Navbar = React.createClass({
     render: function() {
         return (
             <div>
-                <nav className="navbar navbar-default" role="navigation">
-                    <div className="container">
+                <nav className="blue navbar navbar-default" role="navigation">
+                    <div className="container white-text">
                         <div className="navbar-header">
                             <button className="navbar-toggle" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button">
                                 <span className="sr-only">Toggle navigation</span>
@@ -16,12 +16,12 @@ var Navbar = React.createClass({
                                 <span className="icon-bar"/>
                                 <span className="icon-bar"/>
                             </button>
-                            <a className="navbar-brand" href="/">Beginning</a>
+                            <a className="navbar-brand" href="/">Web Exhibit</a>
                         </div>
                         <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul className="nav navbar-nav">
                                 <li>
-                                    <Link to="page">Page</Link>
+                                    <Link to="page">Log in</Link>
                                 </li>
                             </ul>
                         </div>

@@ -1,11 +1,12 @@
 'use strict';
 var React  = require('react');
 var api = require('server-api')
+var ExhibitList = require('ExhibitList');
 
 var Collection = React.createClass({
     getInitialState: function () {
         return {
-            title: 'Loading...',
+            title: '',
             subtitle: '',
             exhibits: []
         }
@@ -15,13 +16,8 @@ var Collection = React.createClass({
         api.getCollection(this.props.params.id, (collection) => {
             this.setState({
                 title: collection.title,
-                subtitle: collection.summary
-            })
-        });
-
-        api.getExhibits(this.props.params.id, (exhibits) => {
-            this.setState({
-                exhibits: exhibits
+                subtitle: collection.summary,
+                exhibits: collection.exhibits
             })
         });
     },
@@ -32,7 +28,11 @@ var Collection = React.createClass({
             <div className='container'>
                 <h1>{this.state.title}</h1>
                 <div className="collection-subtitle">{this.state.subtitle}</div>
-                Collection page?
+                <ExhibitList 
+                    collectionName={this.state.title} 
+                    collectionId={this.props.params.id}
+                    exhibits={this.state.exhibits} 
+                />
             </div>
 
         );

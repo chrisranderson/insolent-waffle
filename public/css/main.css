@@ -4,13 +4,30 @@
 .yellow {background: #ffe11a; }
 .orange {background: #fd7400; }
 
+/* GENERAL */
+
 * {
     box-sizing: border-box;
-    font-family: 'Source Sans Pro'
+    font-family: 'Source Sans Pro';
+    transition: background 0.25s;
 }
 
 .container {
     color: white;
+}
+
+.navbar {
+    border: none;
+}
+
+.submit-button {
+    background: #1f8a70;
+    border: none;
+    height: 40px;
+    font-size: 20px;
+    border-radius: 2px;
+} .submit-button:hover {
+    background: #219478;
 }
 
 /* HOME PAGE */
@@ -50,9 +67,7 @@
     padding: 10px;
     color: #BEBEBE;
     border-bottom: solid 1px #9EB62F;
-}
-
-.search-result:hover {
+} .search-result:hover, .highlighted-result {
     background: #788E16;
     color: inherit;
     text-decoration: none;
@@ -62,6 +77,10 @@
     color: white;
     font-weight: bold;
 }
+
+/* EXHIBIT PAGE */
+
+
 
 /* MISC */
 

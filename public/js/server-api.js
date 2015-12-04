@@ -5,6 +5,10 @@ var api = {
 
     getCollection: function(id, cb) {
         $.get(`/api/collections/${id}`, cb)
+    },
+
+    addExhibit: function(data, cb) {
+        $.post(data, '/api/exhibits')
     }
 }
 

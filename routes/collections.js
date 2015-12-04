@@ -14,9 +14,12 @@ function getCollections (req, res) {
 }
 
 function getCollection (req, res) {
-    Collection.findById(req.params.id, function(error, collection) {
-        res.send(collection);
-    })
+    Collection.findOne({_id: req.params.id})
+        .populate('exhibits')
+        .exec(function(error, collection) {
+            res.send(collection);
+        })
 }
+
 
 module.exports = router;

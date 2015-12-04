@@ -7,7 +7,8 @@ var CollectionSchema = new Schema({
         type: String, 
         default: 'No summary yet.'
     },
-    category: String
+    category: String,
+    exhibits: [{type: mongoose.Schema.Types.ObjectId, ref: 'Exhibit'}]
 });
 
 var Collection = mongoose.model('Collection', CollectionSchema);
