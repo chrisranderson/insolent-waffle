@@ -1,9 +1,10 @@
 var React = require('react')
 var ReactDOM = require('react-dom')
 var {Router, Link, Route, IndexRoute} = require('react-router')
-var Navbar = require('./Navbar');
+var Navbar = require('Navbar');
 var Home = require('./pages/Home');
 var Collection = require('./pages/Collection');
+window.globalCounter = 0;
 
 var App = React.createClass({
   render: function() {

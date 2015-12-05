@@ -13,13 +13,15 @@ var Collection = React.createClass({
     },
 
     componentDidMount: function () {
-        api.getCollection(this.props.params.id, (collection) => {
-            this.setState({
-                title: collection.title,
-                subtitle: collection.summary,
-                exhibits: collection.exhibits
-            })
-        });
+        setTimeout(() => {
+            api.getCollection(this.props.params.id, (collection) => {
+                this.setState({
+                    title: collection.title,
+                    subtitle: collection.summary,
+                    exhibits: collection.exhibits
+                })
+            });
+        }, 100)
     },
 
     render: function() {

@@ -2,12 +2,23 @@
 var React  = require('react');
 var {showIf} = require('styles');
 var api = require('server-api');
+var HTMLEditor = require('./HTMLEditor')
+
+
 
 var Exhibit = React.createClass({
     getDefaultProps: function () {
         return {
-            exhibit: {},
+            exhibit: {
+                code: ''
+            },
             new: false
+        }
+    },
+
+    getInitialState: function () {
+        return {
+            id: ++window.globalCounter
         }
     },
 
@@ -17,10 +28,14 @@ var Exhibit = React.createClass({
         })
     },
 
+
     render: function() {
         return (
-            <div>
-                <span ref="code">Codemirror stuff goes here.</span>
+            <div style={{marginTop:20}}>
+                <HTMLEditor 
+                    id={this.state.id}
+                    ref="code"
+                    code={this.props.exhibit.code}/>
                 <button 
                     className="submit-button"
                     onClick={this.submit} 

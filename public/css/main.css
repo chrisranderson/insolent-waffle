@@ -56,6 +56,8 @@
     color: white;
     border-radius: 4px;
     box-shadow: inset 0px 0px 15px rgba(190, 219, 57, 0.32);
+} .searchbar:focus {
+    outline: none;
 }
 
 .search-result {
@@ -80,9 +82,7 @@
 
 /* EXHIBIT PAGE */
 
-
-
-#preview {
+*[id*=preview] {
     width: 100%;
     min-height: 300px;
     background-color: white;

@@ -2,6 +2,8 @@
 var React  = require('react');
 var {showIf} = require('styles');
 var Exhibit = require('Exhibit');
+var HTMLEditor = require('./HTMLEditor')
+var api = require('server-api')
 
 var ExhibitList = React.createClass({
     getInitialState: function () {
@@ -18,13 +20,12 @@ var ExhibitList = React.createClass({
 
     addExhibit: function (exhibit) {
         api.addExhibit({
-            collection: this.props.collectionId,
+            collectionId: this.props.collectionId,
             exhibit: exhibit
         })
     },
 
     render: function() {
-        debugger;
 
         if (this.props.exhibits.length === 0 && !this.state.proposing) {
             return (
@@ -48,6 +49,16 @@ var ExhibitList = React.createClass({
                     style={showIf(this.state.proposing)} 
                     onSubmit={this.addExhibit}
                 />
+                {this.props.exhibits.map((exhibit, index) => {
+                    return (
+                        <Exhibit 
+                            collectionId={this.props.collectionId}
+                            new={false}
+                            exhibit={exhibit}
+                            key={index}/>
+
+                    )
+                })}
             </div>
         );
     }

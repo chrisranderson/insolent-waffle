@@ -8,7 +8,11 @@ var api = {
     },
 
     addExhibit: function(data, cb) {
-        $.post(data, '/api/exhibits')
+        $.post(
+            '/api/collections/' + data.collectionId + '/addExhibit', 
+            data.exhibit, 
+            cb
+        )
     }
 }
 

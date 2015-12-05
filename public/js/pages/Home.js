@@ -1,6 +1,6 @@
 'use strict';
 var React  = require('react');
-var Searchbar = require('./Searchbar');
+var Searchbar = require('Searchbar');
 var {Link, History, Lifecycle} = require('react-router');
 var {createHistory, useBasename} = require('history')
 
