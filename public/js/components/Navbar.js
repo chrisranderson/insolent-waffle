@@ -1,8 +1,15 @@
 'use strict';
+var auth = require("auth.js");
+
 var React  = require('react');
 var {Link} = require('react-router')
 
 var Navbar = React.createClass({
+
+    // logout the user and redirect to home page
+    logout: function(event) {
+        auth.logout();
+    },
 
     render: function() {
         return (
@@ -21,7 +28,7 @@ var Navbar = React.createClass({
                         <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul className="nav navbar-nav">
                                 <li>
-                                    <Link to="page">Log in</Link>
+                                    {(!auth.loggedIn()) ? (<Link to="login">Log in</Link>) : (<a href="#" onClick={this.logout}>Log out</a>)}
                                 </li>
                             </ul>
                         </div>

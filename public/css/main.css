@@ -91,3 +91,14 @@
 /* MISC */
 
 ::-webkit-input-placeholder {color: rgba(255, 255, 255, 0.5); font-style: italic; } :-moz-placeholder { /* Firefox 18- */ color: rgba(255, 255, 255, 0.5); font-style: italic; } ::-moz-placeholder {  /* Firefox 19+ */ color: rgba(255, 255, 255, 0.5); font-style: italic; } :-ms-input-placeholder {color: rgba(255, 255, 255, 0.5); font-style: italic; }
+
+
+.login-div {
+    color: white;
+    text-align: center;
+}
+
+.login-div .searchbar {
+    width: 50%;
+    margin-bottom: 10px;
+}
