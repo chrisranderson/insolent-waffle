@@ -24,6 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 ////////////////////
 
 app.use('/api/collections', require('./routes/collections'))
+app.use('/api/users', require('./routes/users'))
 
 ////////////////////
 ////////////////////

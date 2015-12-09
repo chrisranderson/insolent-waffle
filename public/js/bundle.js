@@ -54,9 +54,9 @@
 	/** @jsx React.DOM */var React = __webpack_require__(2)
 	var ReactDOM = __webpack_require__(159)
 	var $__0=     __webpack_require__(160),Router=$__0.Router,Link=$__0.Link,Route=$__0.Route,IndexRoute=$__0.IndexRoute
-	var Navbar = __webpack_require__(222);
-	var Home = __webpack_require__(211);
-	var Collection = __webpack_require__(217);
+	var Navbar = __webpack_require__(211);
+	var Home = __webpack_require__(212);
+	var Collection = __webpack_require__(223);
 	window.globalCounter = 0;
 	
 	var App = React.createClass({displayName: "App",
@@ -20330,6 +20330,8 @@
 	 * This source code is licensed under the BSD-style license found in the
 	 * LICENSE file in the root directory of this source tree. An additional grant
 	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule invariant
 	 */
 	
 	'use strict';
@@ -20363,9 +20365,9 @@
 	      var args = [a, b, c, d, e, f];
 	      var argIndex = 0;
 	      error = new Error(
+	        'Invariant Violation: ' +
 	        format.replace(/%s/g, function() { return args[argIndex++]; })
 	      );
-	      error.name = 'Invariant Violation';
 	    }
 	
 	    error.framesToPop = 1; // we don't care about invariant's own frame
@@ -24484,9 +24486,53 @@
 
 	/** @jsx React.DOM */'use strict';
 	var React  = __webpack_require__(2);
-	var Searchbar = __webpack_require__(223);
+	var $__0=  __webpack_require__(160),Link=$__0.Link
+	
+	var Navbar = React.createClass({displayName: "Navbar",
+	
+	    render: function() {
+	        return (
+	            React.createElement("div", null, 
+	                React.createElement("nav", {className: "blue navbar navbar-default", role: "navigation"}, 
+	                    React.createElement("div", {className: "container white-text"}, 
+	                        React.createElement("div", {className: "navbar-header"}, 
+	                            React.createElement("button", {className: "navbar-toggle", "data-target": "#bs-example-navbar-collapse-1", "data-toggle": "collapse", type: "button"}, 
+	                                React.createElement("span", {className: "sr-only"}, "Toggle navigation"), 
+	                                React.createElement("span", {className: "icon-bar"}), 
+	                                React.createElement("span", {className: "icon-bar"}), 
+	                                React.createElement("span", {className: "icon-bar"})
+	                            ), 
+	                            React.createElement("a", {className: "navbar-brand", href: "/"}, "Web Exhibit")
+	                        ), 
+	                        React.createElement("div", {className: "collapse navbar-collapse", id: "bs-example-navbar-collapse-1"}, 
+	                            React.createElement("ul", {className: "nav navbar-nav"}, 
+	                                React.createElement("li", null, 
+	                                    React.createElement(Link, {to: "page"}, "Log in")
+	                                )
+	                            )
+	                        )
+	                    )
+	                ), 
+	                React.createElement("div", {className: "container"}, 
+	                    this.props.children
+	                )
+	            )
+	
+	        );
+	    }
+	});
+	
+	module.exports = Navbar;
+
+/***/ },
+/* 212 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/** @jsx React.DOM */'use strict';
+	var React  = __webpack_require__(2);
+	var Searchbar = __webpack_require__(213);
 	var $__0=    __webpack_require__(160),Link=$__0.Link,History=$__0.History,Lifecycle=$__0.Lifecycle;
-	var $__1=   __webpack_require__(212),createHistory=$__1.createHistory,useBasename=$__1.useBasename
+	var $__1=   __webpack_require__(218),createHistory=$__1.createHistory,useBasename=$__1.useBasename
 	
 	var history = useBasename(createHistory)({
 	    basename: '/transitions'
@@ -24530,688 +24576,14 @@
 	module.exports = Home;
 
 /***/ },
-/* 212 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/** @jsx React.DOM */'use strict';
-	
-	exports.__esModule = true;
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-	
-	var _createBrowserHistory = __webpack_require__(213);
-	
-	var _createBrowserHistory2 = _interopRequireDefault(_createBrowserHistory);
-	
-	exports.createHistory = _createBrowserHistory2['default'];
-	
-	var _createHashHistory2 = __webpack_require__(163);
-	
-	var _createHashHistory3 = _interopRequireDefault(_createHashHistory2);
-	
-	exports.createHashHistory = _createHashHistory3['default'];
-	
-	var _createMemoryHistory2 = __webpack_require__(209);
-	
-	var _createMemoryHistory3 = _interopRequireDefault(_createMemoryHistory2);
-	
-	exports.createMemoryHistory = _createMemoryHistory3['default'];
-	
-	var _createLocation2 = __webpack_require__(176);
-	
-	var _createLocation3 = _interopRequireDefault(_createLocation2);
-	
-	exports.createLocation = _createLocation3['default'];
-	
-	var _useBasename2 = __webpack_require__(210);
-	
-	var _useBasename3 = _interopRequireDefault(_useBasename2);
-	
-	exports.useBasename = _useBasename3['default'];
-	
-	var _useBeforeUnload2 = __webpack_require__(214);
-	
-	var _useBeforeUnload3 = _interopRequireDefault(_useBeforeUnload2);
-	
-	exports.useBeforeUnload = _useBeforeUnload3['default'];
-	
-	var _useQueries2 = __webpack_require__(187);
-	
-	var _useQueries3 = _interopRequireDefault(_useQueries2);
-	
-	exports.useQueries = _useQueries3['default'];
-	
-	var _Actions2 = __webpack_require__(166);
-	
-	var _Actions3 = _interopRequireDefault(_Actions2);
-	
-	exports.Actions = _Actions3['default'];
-	
-	// deprecated
-	
-	var _enableBeforeUnload2 = __webpack_require__(215);
-	
-	var _enableBeforeUnload3 = _interopRequireDefault(_enableBeforeUnload2);
-	
-	exports.enableBeforeUnload = _enableBeforeUnload3['default'];
-	
-	var _enableQueries2 = __webpack_require__(216);
-	
-	var _enableQueries3 = _interopRequireDefault(_enableQueries2);
-	
-	exports.enableQueries = _enableQueries3['default'];
-
-/***/ },
 /* 213 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(process) {/** @jsx React.DOM */'use strict';
-	
-	exports.__esModule = true;
-	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-	
-	var _invariant = __webpack_require__(165);
-	
-	var _invariant2 = _interopRequireDefault(_invariant);
-	
-	var _Actions = __webpack_require__(166);
-	
-	var _ExecutionEnvironment = __webpack_require__(167);
-	
-	var _DOMUtils = __webpack_require__(168);
-	
-	var _DOMStateStorage = __webpack_require__(169);
-	
-	var _createDOMHistory = __webpack_require__(170);
-	
-	var _createDOMHistory2 = _interopRequireDefault(_createDOMHistory);
-	
-	/**
-	 * Creates and returns a history object that uses HTML5's history API
-	 * (pushState, replaceState, and the popstate event) to manage history.
-	 * This is the recommended method of managing history in browsers because
-	 * it provides the cleanest URLs.
-	 *
-	 * Note: In browsers that do not support the HTML5 history API full
-	 * page reloads will be used to preserve URLs.
-	 */
-	function createBrowserHistory() {
-	  var options = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
-	
-	  !_ExecutionEnvironment.canUseDOM ? process.env.NODE_ENV !== 'production' ? _invariant2['default'](false, 'Browser history needs a DOM') : _invariant2['default'](false) : undefined;
-	
-	  var forceRefresh = options.forceRefresh;
-	
-	  var isSupported = _DOMUtils.supportsHistory();
-	  var useRefresh = !isSupported || forceRefresh;
-	
-	  function getCurrentLocation(historyState) {
-	    historyState = historyState || window.history.state || {};
-	
-	    var path = _DOMUtils.getWindowPath();
-	    var _historyState = historyState;
-	    var key = _historyState.key;
-	
-	    var state = undefined;
-	    if (key) {
-	      state = _DOMStateStorage.readState(key);
-	    } else {
-	      state = null;
-	      key = history.createKey();
-	
-	      if (isSupported) window.history.replaceState(_extends({}, historyState, { key: key }), null, path);
-	    }
-	
-	    return history.createLocation(path, state, undefined, key);
-	  }
-	
-	  function startPopStateListener(_ref) {
-	    var transitionTo = _ref.transitionTo;
-	
-	    function popStateListener(event) {
-	      if (event.state === undefined) return; // Ignore extraneous popstate events in WebKit.
-	
-	      transitionTo(getCurrentLocation(event.state));
-	    }
-	
-	    _DOMUtils.addEventListener(window, 'popstate', popStateListener);
-	
-	    return function () {
-	      _DOMUtils.removeEventListener(window, 'popstate', popStateListener);
-	    };
-	  }
-	
-	  function finishTransition(location) {
-	    var basename = location.basename;
-	    var pathname = location.pathname;
-	    var search = location.search;
-	    var hash = location.hash;
-	    var state = location.state;
-	    var action = location.action;
-	    var key = location.key;
-	
-	    if (action === _Actions.POP) return; // Nothing to do.
-	
-	    _DOMStateStorage.saveState(key, state);
-	
-	    var path = (basename || '') + pathname + search + hash;
-	    var historyState = {
-	      key: key
-	    };
-	
-	    if (action === _Actions.PUSH) {
-	      if (useRefresh) {
-	        window.location.href = path;
-	        return false; // Prevent location update.
-	      } else {
-	          window.history.pushState(historyState, null, path);
-	        }
-	    } else {
-	      // REPLACE
-	      if (useRefresh) {
-	        window.location.replace(path);
-	        return false; // Prevent location update.
-	      } else {
-	          window.history.replaceState(historyState, null, path);
-	        }
-	    }
-	  }
-	
-	  var history = _createDOMHistory2['default'](_extends({}, options, {
-	    getCurrentLocation: getCurrentLocation,
-	    finishTransition: finishTransition,
-	    saveState: _DOMStateStorage.saveState
-	  }));
-	
-	  var listenerCount = 0,
-	      stopPopStateListener = undefined;
-	
-	  function listenBefore(listener) {
-	    if (++listenerCount === 1) stopPopStateListener = startPopStateListener(history);
-	
-	    var unlisten = history.listenBefore(listener);
-	
-	    return function () {
-	      unlisten();
-	
-	      if (--listenerCount === 0) stopPopStateListener();
-	    };
-	  }
-	
-	  function listen(listener) {
-	    if (++listenerCount === 1) stopPopStateListener = startPopStateListener(history);
-	
-	    var unlisten = history.listen(listener);
-	
-	    return function () {
-	      unlisten();
-	
-	      if (--listenerCount === 0) stopPopStateListener();
-	    };
-	  }
-	
-	  // deprecated
-	  function registerTransitionHook(hook) {
-	    if (++listenerCount === 1) stopPopStateListener = startPopStateListener(history);
-	
-	    history.registerTransitionHook(hook);
-	  }
-	
-	  // deprecated
-	  function unregisterTransitionHook(hook) {
-	    history.unregisterTransitionHook(hook);
-	
-	    if (--listenerCount === 0) stopPopStateListener();
-	  }
-	
-	  return _extends({}, history, {
-	    listenBefore: listenBefore,
-	    listen: listen,
-	    registerTransitionHook: registerTransitionHook,
-	    unregisterTransitionHook: unregisterTransitionHook
-	  });
-	}
-	
-	exports['default'] = createBrowserHistory;
-	module.exports = exports['default'];
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
-
-/***/ },
-/* 214 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(process) {/** @jsx React.DOM */'use strict';
-	
-	exports.__esModule = true;
-	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-	
-	var _warning = __webpack_require__(164);
-	
-	var _warning2 = _interopRequireDefault(_warning);
-	
-	var _ExecutionEnvironment = __webpack_require__(167);
-	
-	var _DOMUtils = __webpack_require__(168);
-	
-	var _deprecate = __webpack_require__(180);
-	
-	var _deprecate2 = _interopRequireDefault(_deprecate);
-	
-	function startBeforeUnloadListener(getBeforeUnloadPromptMessage) {
-	  function listener(event) {
-	    var message = getBeforeUnloadPromptMessage();
-	
-	    if (typeof message === 'string') {
-	      (event || window.event).returnValue = message;
-	      return message;
-	    }
-	  }
-	
-	  _DOMUtils.addEventListener(window, 'beforeunload', listener);
-	
-	  return function () {
-	    _DOMUtils.removeEventListener(window, 'beforeunload', listener);
-	  };
-	}
-	
-	/**
-	 * Returns a new createHistory function that can be used to create
-	 * history objects that know how to use the beforeunload event in web
-	 * browsers to cancel navigation.
-	 */
-	function useBeforeUnload(createHistory) {
-	  return function (options) {
-	    var history = createHistory(options);
-	
-	    var stopBeforeUnloadListener = undefined;
-	    var beforeUnloadHooks = [];
-	
-	    function getBeforeUnloadPromptMessage() {
-	      var message = undefined;
-	
-	      for (var i = 0, len = beforeUnloadHooks.length; message == null && i < len; ++i) {
-	        message = beforeUnloadHooks[i].call();
-	      }return message;
-	    }
-	
-	    function listenBeforeUnload(hook) {
-	      beforeUnloadHooks.push(hook);
-	
-	      if (beforeUnloadHooks.length === 1) {
-	        if (_ExecutionEnvironment.canUseDOM) {
-	          stopBeforeUnloadListener = startBeforeUnloadListener(getBeforeUnloadPromptMessage);
-	        } else {
-	          process.env.NODE_ENV !== 'production' ? _warning2['default'](false, 'listenBeforeUnload only works in DOM environments') : undefined;
-	        }
-	      }
-	
-	      return function () {
-	        beforeUnloadHooks = beforeUnloadHooks.filter(function (item) {
-	          return item !== hook;
-	        });
-	
-	        if (beforeUnloadHooks.length === 0 && stopBeforeUnloadListener) {
-	          stopBeforeUnloadListener();
-	          stopBeforeUnloadListener = null;
-	        }
-	      };
-	    }
-	
-	    // deprecated
-	    function registerBeforeUnloadHook(hook) {
-	      if (_ExecutionEnvironment.canUseDOM && beforeUnloadHooks.indexOf(hook) === -1) {
-	        beforeUnloadHooks.push(hook);
-	
-	        if (beforeUnloadHooks.length === 1) stopBeforeUnloadListener = startBeforeUnloadListener(getBeforeUnloadPromptMessage);
-	      }
-	    }
-	
-	    // deprecated
-	    function unregisterBeforeUnloadHook(hook) {
-	      if (beforeUnloadHooks.length > 0) {
-	        beforeUnloadHooks = beforeUnloadHooks.filter(function (item) {
-	          return item !== hook;
-	        });
-	
-	        if (beforeUnloadHooks.length === 0) stopBeforeUnloadListener();
-	      }
-	    }
-	
-	    return _extends({}, history, {
-	      listenBeforeUnload: listenBeforeUnload,
-	
-	      registerBeforeUnloadHook: _deprecate2['default'](registerBeforeUnloadHook, 'registerBeforeUnloadHook is deprecated; use listenBeforeUnload instead'),
-	      unregisterBeforeUnloadHook: _deprecate2['default'](unregisterBeforeUnloadHook, 'unregisterBeforeUnloadHook is deprecated; use the callback returned from listenBeforeUnload instead')
-	    });
-	  };
-	}
-	
-	exports['default'] = useBeforeUnload;
-	module.exports = exports['default'];
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
-
-/***/ },
-/* 215 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/** @jsx React.DOM */'use strict';
-	
-	exports.__esModule = true;
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-	
-	var _deprecate = __webpack_require__(180);
-	
-	var _deprecate2 = _interopRequireDefault(_deprecate);
-	
-	var _useBeforeUnload = __webpack_require__(214);
-	
-	var _useBeforeUnload2 = _interopRequireDefault(_useBeforeUnload);
-	
-	exports['default'] = _deprecate2['default'](_useBeforeUnload2['default'], 'enableBeforeUnload is deprecated, use useBeforeUnload instead');
-	module.exports = exports['default'];
-
-/***/ },
-/* 216 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/** @jsx React.DOM */'use strict';
-	
-	exports.__esModule = true;
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-	
-	var _deprecate = __webpack_require__(180);
-	
-	var _deprecate2 = _interopRequireDefault(_deprecate);
-	
-	var _useQueries = __webpack_require__(187);
-	
-	var _useQueries2 = _interopRequireDefault(_useQueries);
-	
-	exports['default'] = _deprecate2['default'](_useQueries2['default'], 'enableQueries is deprecated, use useQueries instead');
-	module.exports = exports['default'];
-
-/***/ },
-/* 217 */
-/***/ function(module, exports, __webpack_require__) {
-
 	/** @jsx React.DOM */'use strict';
 	var React  = __webpack_require__(2);
-	var api = __webpack_require__(218)
-	var ExhibitList = __webpack_require__(219);
-	
-	var Collection = React.createClass({displayName: "Collection",
-	    getInitialState: function () {
-	        return {
-	            title: '',
-	            subtitle: '',
-	            exhibits: []
-	        }
-	    },
-	
-	    componentDidMount: function () {
-	        setTimeout(function()  {
-	            api.getCollection(this.props.params.id, function(collection)  {
-	                this.setState({
-	                    title: collection.title,
-	                    subtitle: collection.summary,
-	                    exhibits: collection.exhibits
-	                })
-	            }.bind(this));
-	        }.bind(this), 100)
-	    },
-	
-	    render: function() {
-	        return (
-	
-	            React.createElement("div", {className: "container"}, 
-	                React.createElement("h1", null, this.state.title), 
-	                React.createElement("div", {className: "collection-subtitle"}, this.state.subtitle), 
-	                React.createElement(ExhibitList, {
-	                    collectionName: this.state.title, 
-	                    collectionId: this.props.params.id, 
-	                    exhibits: this.state.exhibits}
-	                )
-	            )
-	
-	        );
-	    }
-	});
-	
-	module.exports = Collection;
-
-/***/ },
-/* 218 */
-/***/ function(module, exports) {
-
-	/** @jsx React.DOM */var api = {
-	    getCollections: function (cb) {
-	        $.get('/api/collections', cb)
-	    },
-	
-	    getCollection: function(id, cb) {
-	        $.get(("/api/collections/" + id), cb)
-	    },
-	
-	    addExhibit: function(data, cb) {
-	        $.post(
-	            '/api/collections/' + data.collectionId + '/addExhibit', 
-	            data.exhibit, 
-	            cb
-	        )
-	    }
-	}
-	
-	module.exports = api;
-
-/***/ },
-/* 219 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/** @jsx React.DOM */'use strict';
-	var React  = __webpack_require__(2);
-	var $__0=  __webpack_require__(220),showIf=$__0.showIf;
-	var Exhibit = __webpack_require__(221);
-	var HTMLEditor = __webpack_require__(227)
-	var api = __webpack_require__(218)
-	
-	var ExhibitList = React.createClass({displayName: "ExhibitList",
-	    getInitialState: function () {
-	        return {
-	            proposing: false
-	        }
-	    },
-	
-	    proposeExhibit: function () {
-	        this.setState({
-	            proposing: true
-	        })
-	    },
-	
-	    addExhibit: function (exhibit) {
-	        api.addExhibit({
-	            collectionId: this.props.collectionId,
-	            exhibit: exhibit
-	        })
-	    },
-	
-	    render: function() {
-	
-	        if (this.props.exhibits.length === 0 && !this.state.proposing) {
-	            return (
-	                React.createElement("div", null, 
-	                    React.createElement("h2", null, "Sorry, there aren't any exhibits for ", this.props.collectionName, " yet."), 
-	                    React.createElement("button", {
-	                        className: "submit-button", 
-	                        onClick: this.proposeExhibit}, 
-	                        "Propose an exhibit"
-	                    )
-	                )
-	            )
-	        }
-	
-	        return (
-	            React.createElement("div", null, 
-	                React.createElement(Exhibit, {
-	                    comment: "This exhibit is to be used for submitted new exhibits.", 
-	                    collectionId: this.props.collectionId, 
-	                    new: true, 
-	                    style: showIf(this.state.proposing), 
-	                    onSubmit: this.addExhibit}
-	                ), 
-	                this.props.exhibits.map(function(exhibit, index)  {
-	                    return (
-	                        React.createElement(Exhibit, {
-	                            collectionId: this.props.collectionId, 
-	                            new: false, 
-	                            exhibit: exhibit, 
-	                            key: index})
-	
-	                    )
-	                }.bind(this))
-	            )
-	        );
-	    }
-	});
-	
-	module.exports = ExhibitList;
-
-/***/ },
-/* 220 */
-/***/ function(module, exports) {
-
-	/** @jsx React.DOM */var styles = {
-	    showIf: function (condition) {
-	        if (condition) {
-	            return {
-	                display: 'inherit'
-	            }
-	        } else {
-	            return {
-	                display: 'none'
-	            }
-	        }
-	
-	    }
-	}
-	
-	module.exports = styles;
-
-/***/ },
-/* 221 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/** @jsx React.DOM */'use strict';
-	var React  = __webpack_require__(2);
-	var $__0=  __webpack_require__(220),showIf=$__0.showIf;
-	var api = __webpack_require__(218);
-	var HTMLEditor = __webpack_require__(227)
-	
-	
-	
-	var Exhibit = React.createClass({displayName: "Exhibit",
-	    getDefaultProps: function () {
-	        return {
-	            exhibit: {
-	                code: ''
-	            },
-	            new: false
-	        }
-	    },
-	
-	    getInitialState: function () {
-	        return {
-	            id: ++window.globalCounter
-	        }
-	    },
-	
-	    submit: function() {
-	        this.props.onSubmit({
-	            code: this.refs.code.getCode()
-	        })
-	    },
-	
-	
-	    render: function() {
-	        return (
-	            React.createElement("div", {style: {marginTop:20}}, 
-	                React.createElement(HTMLEditor, {
-	                    id: this.state.id, 
-	                    ref: "code", 
-	                    code: this.props.exhibit.code}), 
-	                React.createElement("button", {
-	                    className: "submit-button", 
-	                    onClick: this.submit, 
-	                    style: showIf(this.props.new === true)}, 
-	                    "Submit this exhibit"
-	                )
-	            )
-	        );
-	    }
-	});
-	
-	module.exports = Exhibit;
-
-/***/ },
-/* 222 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/** @jsx React.DOM */'use strict';
-	var React  = __webpack_require__(2);
-	var $__0=  __webpack_require__(160),Link=$__0.Link
-	
-	var Navbar = React.createClass({displayName: "Navbar",
-	
-	    render: function() {
-	        return (
-	            React.createElement("div", null, 
-	                React.createElement("nav", {className: "blue navbar navbar-default", role: "navigation"}, 
-	                    React.createElement("div", {className: "container white-text"}, 
-	                        React.createElement("div", {className: "navbar-header"}, 
-	                            React.createElement("button", {className: "navbar-toggle", "data-target": "#bs-example-navbar-collapse-1", "data-toggle": "collapse", type: "button"}, 
-	                                React.createElement("span", {className: "sr-only"}, "Toggle navigation"), 
-	                                React.createElement("span", {className: "icon-bar"}), 
-	                                React.createElement("span", {className: "icon-bar"}), 
-	                                React.createElement("span", {className: "icon-bar"})
-	                            ), 
-	                            React.createElement("a", {className: "navbar-brand", href: "/"}, "Web Exhibit")
-	                        ), 
-	                        React.createElement("div", {className: "collapse navbar-collapse", id: "bs-example-navbar-collapse-1"}, 
-	                            React.createElement("ul", {className: "nav navbar-nav"}, 
-	                                React.createElement("li", null, 
-	                                    React.createElement(Link, {to: "page"}, "Log in")
-	                                )
-	                            )
-	                        )
-	                    )
-	                ), 
-	                React.createElement("div", {className: "container"}, 
-	                    this.props.children
-	                )
-	            )
-	
-	        );
-	    }
-	});
-	
-	module.exports = Navbar;
-
-/***/ },
-/* 223 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/** @jsx React.DOM */'use strict';
-	var React  = __webpack_require__(2);
-	var api = __webpack_require__(218);
-	var Fuse = __webpack_require__(224)
-	var SearchResults = __webpack_require__(225);
+	var api = __webpack_require__(214);
+	var Fuse = __webpack_require__(215)
+	var SearchResults = __webpack_require__(216);
 	
 	var Searchbar = React.createClass({displayName: "Searchbar",
 	    getInitialState: function () {
@@ -25280,7 +24652,31 @@
 	module.exports = Searchbar;
 
 /***/ },
-/* 224 */
+/* 214 */
+/***/ function(module, exports) {
+
+	/** @jsx React.DOM */var api = {
+	    getCollections: function (cb) {
+	        $.get('/api/collections', cb)
+	    },
+	
+	    getCollection: function(id, cb) {
+	        $.get(("/api/collections/" + id), cb)
+	    },
+	
+	    addExhibit: function(data, cb) {
+	        $.post(
+	            '/api/collections/' + data.collectionId + '/addExhibit', 
+	            data.exhibit, 
+	            cb
+	        )
+	    }
+	}
+	
+	module.exports = api;
+
+/***/ },
+/* 215 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/** @jsx React.DOM *//**
@@ -25787,13 +25183,13 @@
 
 
 /***/ },
-/* 225 */
+/* 216 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/** @jsx React.DOM */'use strict';
 	var React  = __webpack_require__(2);
 	var $__0=  __webpack_require__(160),Link=$__0.Link;
-	var _ = __webpack_require__(226);
+	var _ = __webpack_require__(217);
 	
 	
 	
@@ -25869,7 +25265,7 @@
 	module.exports = SearchResults;
 
 /***/ },
-/* 226 */
+/* 217 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/** @jsx React.DOM *///     Underscore.js 1.8.3
@@ -27423,6 +26819,612 @@
 
 
 /***/ },
+/* 218 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/** @jsx React.DOM */'use strict';
+	
+	exports.__esModule = true;
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	var _createBrowserHistory = __webpack_require__(219);
+	
+	var _createBrowserHistory2 = _interopRequireDefault(_createBrowserHistory);
+	
+	exports.createHistory = _createBrowserHistory2['default'];
+	
+	var _createHashHistory2 = __webpack_require__(163);
+	
+	var _createHashHistory3 = _interopRequireDefault(_createHashHistory2);
+	
+	exports.createHashHistory = _createHashHistory3['default'];
+	
+	var _createMemoryHistory2 = __webpack_require__(209);
+	
+	var _createMemoryHistory3 = _interopRequireDefault(_createMemoryHistory2);
+	
+	exports.createMemoryHistory = _createMemoryHistory3['default'];
+	
+	var _createLocation2 = __webpack_require__(176);
+	
+	var _createLocation3 = _interopRequireDefault(_createLocation2);
+	
+	exports.createLocation = _createLocation3['default'];
+	
+	var _useBasename2 = __webpack_require__(210);
+	
+	var _useBasename3 = _interopRequireDefault(_useBasename2);
+	
+	exports.useBasename = _useBasename3['default'];
+	
+	var _useBeforeUnload2 = __webpack_require__(220);
+	
+	var _useBeforeUnload3 = _interopRequireDefault(_useBeforeUnload2);
+	
+	exports.useBeforeUnload = _useBeforeUnload3['default'];
+	
+	var _useQueries2 = __webpack_require__(187);
+	
+	var _useQueries3 = _interopRequireDefault(_useQueries2);
+	
+	exports.useQueries = _useQueries3['default'];
+	
+	var _Actions2 = __webpack_require__(166);
+	
+	var _Actions3 = _interopRequireDefault(_Actions2);
+	
+	exports.Actions = _Actions3['default'];
+	
+	// deprecated
+	
+	var _enableBeforeUnload2 = __webpack_require__(221);
+	
+	var _enableBeforeUnload3 = _interopRequireDefault(_enableBeforeUnload2);
+	
+	exports.enableBeforeUnload = _enableBeforeUnload3['default'];
+	
+	var _enableQueries2 = __webpack_require__(222);
+	
+	var _enableQueries3 = _interopRequireDefault(_enableQueries2);
+	
+	exports.enableQueries = _enableQueries3['default'];
+
+/***/ },
+/* 219 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {/** @jsx React.DOM */'use strict';
+	
+	exports.__esModule = true;
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	var _invariant = __webpack_require__(165);
+	
+	var _invariant2 = _interopRequireDefault(_invariant);
+	
+	var _Actions = __webpack_require__(166);
+	
+	var _ExecutionEnvironment = __webpack_require__(167);
+	
+	var _DOMUtils = __webpack_require__(168);
+	
+	var _DOMStateStorage = __webpack_require__(169);
+	
+	var _createDOMHistory = __webpack_require__(170);
+	
+	var _createDOMHistory2 = _interopRequireDefault(_createDOMHistory);
+	
+	/**
+	 * Creates and returns a history object that uses HTML5's history API
+	 * (pushState, replaceState, and the popstate event) to manage history.
+	 * This is the recommended method of managing history in browsers because
+	 * it provides the cleanest URLs.
+	 *
+	 * Note: In browsers that do not support the HTML5 history API full
+	 * page reloads will be used to preserve URLs.
+	 */
+	function createBrowserHistory() {
+	  var options = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+	
+	  !_ExecutionEnvironment.canUseDOM ? process.env.NODE_ENV !== 'production' ? _invariant2['default'](false, 'Browser history needs a DOM') : _invariant2['default'](false) : undefined;
+	
+	  var forceRefresh = options.forceRefresh;
+	
+	  var isSupported = _DOMUtils.supportsHistory();
+	  var useRefresh = !isSupported || forceRefresh;
+	
+	  function getCurrentLocation(historyState) {
+	    historyState = historyState || window.history.state || {};
+	
+	    var path = _DOMUtils.getWindowPath();
+	    var _historyState = historyState;
+	    var key = _historyState.key;
+	
+	    var state = undefined;
+	    if (key) {
+	      state = _DOMStateStorage.readState(key);
+	    } else {
+	      state = null;
+	      key = history.createKey();
+	
+	      if (isSupported) window.history.replaceState(_extends({}, historyState, { key: key }), null, path);
+	    }
+	
+	    return history.createLocation(path, state, undefined, key);
+	  }
+	
+	  function startPopStateListener(_ref) {
+	    var transitionTo = _ref.transitionTo;
+	
+	    function popStateListener(event) {
+	      if (event.state === undefined) return; // Ignore extraneous popstate events in WebKit.
+	
+	      transitionTo(getCurrentLocation(event.state));
+	    }
+	
+	    _DOMUtils.addEventListener(window, 'popstate', popStateListener);
+	
+	    return function () {
+	      _DOMUtils.removeEventListener(window, 'popstate', popStateListener);
+	    };
+	  }
+	
+	  function finishTransition(location) {
+	    var basename = location.basename;
+	    var pathname = location.pathname;
+	    var search = location.search;
+	    var hash = location.hash;
+	    var state = location.state;
+	    var action = location.action;
+	    var key = location.key;
+	
+	    if (action === _Actions.POP) return; // Nothing to do.
+	
+	    _DOMStateStorage.saveState(key, state);
+	
+	    var path = (basename || '') + pathname + search + hash;
+	    var historyState = {
+	      key: key
+	    };
+	
+	    if (action === _Actions.PUSH) {
+	      if (useRefresh) {
+	        window.location.href = path;
+	        return false; // Prevent location update.
+	      } else {
+	          window.history.pushState(historyState, null, path);
+	        }
+	    } else {
+	      // REPLACE
+	      if (useRefresh) {
+	        window.location.replace(path);
+	        return false; // Prevent location update.
+	      } else {
+	          window.history.replaceState(historyState, null, path);
+	        }
+	    }
+	  }
+	
+	  var history = _createDOMHistory2['default'](_extends({}, options, {
+	    getCurrentLocation: getCurrentLocation,
+	    finishTransition: finishTransition,
+	    saveState: _DOMStateStorage.saveState
+	  }));
+	
+	  var listenerCount = 0,
+	      stopPopStateListener = undefined;
+	
+	  function listenBefore(listener) {
+	    if (++listenerCount === 1) stopPopStateListener = startPopStateListener(history);
+	
+	    var unlisten = history.listenBefore(listener);
+	
+	    return function () {
+	      unlisten();
+	
+	      if (--listenerCount === 0) stopPopStateListener();
+	    };
+	  }
+	
+	  function listen(listener) {
+	    if (++listenerCount === 1) stopPopStateListener = startPopStateListener(history);
+	
+	    var unlisten = history.listen(listener);
+	
+	    return function () {
+	      unlisten();
+	
+	      if (--listenerCount === 0) stopPopStateListener();
+	    };
+	  }
+	
+	  // deprecated
+	  function registerTransitionHook(hook) {
+	    if (++listenerCount === 1) stopPopStateListener = startPopStateListener(history);
+	
+	    history.registerTransitionHook(hook);
+	  }
+	
+	  // deprecated
+	  function unregisterTransitionHook(hook) {
+	    history.unregisterTransitionHook(hook);
+	
+	    if (--listenerCount === 0) stopPopStateListener();
+	  }
+	
+	  return _extends({}, history, {
+	    listenBefore: listenBefore,
+	    listen: listen,
+	    registerTransitionHook: registerTransitionHook,
+	    unregisterTransitionHook: unregisterTransitionHook
+	  });
+	}
+	
+	exports['default'] = createBrowserHistory;
+	module.exports = exports['default'];
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
+
+/***/ },
+/* 220 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {/** @jsx React.DOM */'use strict';
+	
+	exports.__esModule = true;
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	var _warning = __webpack_require__(164);
+	
+	var _warning2 = _interopRequireDefault(_warning);
+	
+	var _ExecutionEnvironment = __webpack_require__(167);
+	
+	var _DOMUtils = __webpack_require__(168);
+	
+	var _deprecate = __webpack_require__(180);
+	
+	var _deprecate2 = _interopRequireDefault(_deprecate);
+	
+	function startBeforeUnloadListener(getBeforeUnloadPromptMessage) {
+	  function listener(event) {
+	    var message = getBeforeUnloadPromptMessage();
+	
+	    if (typeof message === 'string') {
+	      (event || window.event).returnValue = message;
+	      return message;
+	    }
+	  }
+	
+	  _DOMUtils.addEventListener(window, 'beforeunload', listener);
+	
+	  return function () {
+	    _DOMUtils.removeEventListener(window, 'beforeunload', listener);
+	  };
+	}
+	
+	/**
+	 * Returns a new createHistory function that can be used to create
+	 * history objects that know how to use the beforeunload event in web
+	 * browsers to cancel navigation.
+	 */
+	function useBeforeUnload(createHistory) {
+	  return function (options) {
+	    var history = createHistory(options);
+	
+	    var stopBeforeUnloadListener = undefined;
+	    var beforeUnloadHooks = [];
+	
+	    function getBeforeUnloadPromptMessage() {
+	      var message = undefined;
+	
+	      for (var i = 0, len = beforeUnloadHooks.length; message == null && i < len; ++i) {
+	        message = beforeUnloadHooks[i].call();
+	      }return message;
+	    }
+	
+	    function listenBeforeUnload(hook) {
+	      beforeUnloadHooks.push(hook);
+	
+	      if (beforeUnloadHooks.length === 1) {
+	        if (_ExecutionEnvironment.canUseDOM) {
+	          stopBeforeUnloadListener = startBeforeUnloadListener(getBeforeUnloadPromptMessage);
+	        } else {
+	          process.env.NODE_ENV !== 'production' ? _warning2['default'](false, 'listenBeforeUnload only works in DOM environments') : undefined;
+	        }
+	      }
+	
+	      return function () {
+	        beforeUnloadHooks = beforeUnloadHooks.filter(function (item) {
+	          return item !== hook;
+	        });
+	
+	        if (beforeUnloadHooks.length === 0 && stopBeforeUnloadListener) {
+	          stopBeforeUnloadListener();
+	          stopBeforeUnloadListener = null;
+	        }
+	      };
+	    }
+	
+	    // deprecated
+	    function registerBeforeUnloadHook(hook) {
+	      if (_ExecutionEnvironment.canUseDOM && beforeUnloadHooks.indexOf(hook) === -1) {
+	        beforeUnloadHooks.push(hook);
+	
+	        if (beforeUnloadHooks.length === 1) stopBeforeUnloadListener = startBeforeUnloadListener(getBeforeUnloadPromptMessage);
+	      }
+	    }
+	
+	    // deprecated
+	    function unregisterBeforeUnloadHook(hook) {
+	      if (beforeUnloadHooks.length > 0) {
+	        beforeUnloadHooks = beforeUnloadHooks.filter(function (item) {
+	          return item !== hook;
+	        });
+	
+	        if (beforeUnloadHooks.length === 0) stopBeforeUnloadListener();
+	      }
+	    }
+	
+	    return _extends({}, history, {
+	      listenBeforeUnload: listenBeforeUnload,
+	
+	      registerBeforeUnloadHook: _deprecate2['default'](registerBeforeUnloadHook, 'registerBeforeUnloadHook is deprecated; use listenBeforeUnload instead'),
+	      unregisterBeforeUnloadHook: _deprecate2['default'](unregisterBeforeUnloadHook, 'unregisterBeforeUnloadHook is deprecated; use the callback returned from listenBeforeUnload instead')
+	    });
+	  };
+	}
+	
+	exports['default'] = useBeforeUnload;
+	module.exports = exports['default'];
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
+
+/***/ },
+/* 221 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/** @jsx React.DOM */'use strict';
+	
+	exports.__esModule = true;
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	var _deprecate = __webpack_require__(180);
+	
+	var _deprecate2 = _interopRequireDefault(_deprecate);
+	
+	var _useBeforeUnload = __webpack_require__(220);
+	
+	var _useBeforeUnload2 = _interopRequireDefault(_useBeforeUnload);
+	
+	exports['default'] = _deprecate2['default'](_useBeforeUnload2['default'], 'enableBeforeUnload is deprecated, use useBeforeUnload instead');
+	module.exports = exports['default'];
+
+/***/ },
+/* 222 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/** @jsx React.DOM */'use strict';
+	
+	exports.__esModule = true;
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	var _deprecate = __webpack_require__(180);
+	
+	var _deprecate2 = _interopRequireDefault(_deprecate);
+	
+	var _useQueries = __webpack_require__(187);
+	
+	var _useQueries2 = _interopRequireDefault(_useQueries);
+	
+	exports['default'] = _deprecate2['default'](_useQueries2['default'], 'enableQueries is deprecated, use useQueries instead');
+	module.exports = exports['default'];
+
+/***/ },
+/* 223 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/** @jsx React.DOM */'use strict';
+	var React  = __webpack_require__(2);
+	var api = __webpack_require__(214)
+	var ExhibitList = __webpack_require__(224);
+	
+	var Collection = React.createClass({displayName: "Collection",
+	    getInitialState: function () {
+	        return {
+	            title: '',
+	            subtitle: '',
+	            exhibits: []
+	        }
+	    },
+	
+	    componentDidMount: function () {
+	        setTimeout(function()  {
+	            api.getCollection(this.props.params.id, function(collection)  {
+	                this.setState({
+	                    title: collection.title,
+	                    subtitle: collection.summary,
+	                    exhibits: collection.exhibits
+	                })
+	            }.bind(this));
+	        }.bind(this), 100)
+	    },
+	
+	    render: function() {
+	        return (
+	
+	            React.createElement("div", {className: "container"}, 
+	                React.createElement("h1", null, this.state.title), 
+	                React.createElement("div", {className: "collection-subtitle"}, this.state.subtitle), 
+	                React.createElement(ExhibitList, {
+	                    collectionName: this.state.title, 
+	                    collectionId: this.props.params.id, 
+	                    exhibits: this.state.exhibits}
+	                )
+	            )
+	
+	        );
+	    }
+	});
+	
+	module.exports = Collection;
+
+/***/ },
+/* 224 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/** @jsx React.DOM */'use strict';
+	var React  = __webpack_require__(2);
+	var $__0=  __webpack_require__(225),showIf=$__0.showIf;
+	var Exhibit = __webpack_require__(226);
+	var HTMLEditor = __webpack_require__(227)
+	var api = __webpack_require__(214)
+	
+	var ExhibitList = React.createClass({displayName: "ExhibitList",
+	    getInitialState: function () {
+	        return {
+	            proposing: false
+	        }
+	    },
+	
+	    proposeExhibit: function () {
+	        this.setState({
+	            proposing: true
+	        })
+	    },
+	
+	    addExhibit: function (exhibit) {
+	        api.addExhibit({
+	            collectionId: this.props.collectionId,
+	            exhibit: exhibit
+	        })
+	    },
+	
+	    render: function() {
+	
+	        if (this.props.exhibits.length === 0 && !this.state.proposing) {
+	            return (
+	                React.createElement("div", null, 
+	                    React.createElement("h2", null, "Sorry, there aren't any exhibits for ", this.props.collectionName, " yet."), 
+	                    React.createElement("button", {
+	                        className: "submit-button", 
+	                        onClick: this.proposeExhibit}, 
+	                        "Propose an exhibit"
+	                    )
+	                )
+	            )
+	        }
+	
+	        return (
+	            React.createElement("div", null, 
+	                React.createElement(Exhibit, {
+	                    comment: "This exhibit is to be used for submitted new exhibits.", 
+	                    collectionId: this.props.collectionId, 
+	                    new: true, 
+	                    style: showIf(this.state.proposing), 
+	                    onSubmit: this.addExhibit}
+	                ), 
+	                this.props.exhibits.map(function(exhibit, index)  {
+	                    return (
+	                        React.createElement(Exhibit, {
+	                            collectionId: this.props.collectionId, 
+	                            new: false, 
+	                            exhibit: exhibit, 
+	                            key: index})
+	
+	                    )
+	                }.bind(this))
+	            )
+	        );
+	    }
+	});
+	
+	module.exports = ExhibitList;
+
+/***/ },
+/* 225 */
+/***/ function(module, exports) {
+
+	/** @jsx React.DOM */var styles = {
+	    showIf: function (condition) {
+	        if (condition) {
+	            return {
+	                display: 'inherit'
+	            }
+	        } else {
+	            return {
+	                display: 'none'
+	            }
+	        }
+	
+	    }
+	}
+	
+	module.exports = styles;
+
+/***/ },
+/* 226 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/** @jsx React.DOM */'use strict';
+	var React  = __webpack_require__(2);
+	var $__0=  __webpack_require__(225),showIf=$__0.showIf;
+	var api = __webpack_require__(214);
+	var HTMLEditor = __webpack_require__(227)
+	
+	
+	
+	var Exhibit = React.createClass({displayName: "Exhibit",
+	    getDefaultProps: function () {
+	        return {
+	            exhibit: {
+	                code: ''
+	            },
+	            new: false
+	        }
+	    },
+	
+	    getInitialState: function () {
+	        return {
+	            id: ++window.globalCounter
+	        }
+	    },
+	
+	    submit: function() {
+	        this.props.onSubmit({
+	            code: this.refs.code.getCode()
+	        })
+	    },
+	
+	
+	    render: function() {
+	        return (
+	            React.createElement("div", {style: {marginTop:20}}, 
+	                React.createElement(HTMLEditor, {
+	                    id: this.state.id, 
+	                    ref: "code", 
+	                    code: this.props.exhibit.code}), 
+	                React.createElement("button", {
+	                    className: "submit-button", 
+	                    onClick: this.submit, 
+	                    style: showIf(this.props.new === true)}, 
+	                    "Submit this exhibit"
+	                )
+	            )
+	        );
+	    }
+	});
+	
+	module.exports = Exhibit;
+
+/***/ },
 /* 227 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -27547,8 +27549,8 @@
 			this.codeMirror.on('change', this.codemirrorValueChanged);
 			this.codeMirror.on('focus', this.focusChanged.bind(this, true));
 			this.codeMirror.on('blur', this.focusChanged.bind(this, false));
-			this._currentCodemirrorValue = this.props.defaultValue || this.props.value || '';
-			this.codeMirror.setValue(this._currentCodemirrorValue);
+			this._currentCodemirrorValue = this.props.value;
+			this.codeMirror.setValue(this.props.value);
 		},
 	
 		componentWillUnmount: function componentWillUnmount() {
@@ -27559,7 +27561,7 @@
 		},
 	
 		componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
-			if (this.codeMirror && nextProps.value !== undefined && this._currentCodemirrorValue !== nextProps.value) {
+			if (this.codeMirror && this._currentCodemirrorValue !== nextProps.value) {
 				this.codeMirror.setValue(nextProps.value);
 			}
 			if (typeof nextProps.options === 'object') {
