@@ -7,6 +7,7 @@ var Collection = require('./pages/Collection');
 var Login = require('./pages/Login');
 var auth = require("./auth.js");
 window.globalCounter = 0;
+window.isUndefined = function (thing) {return typeof thing === 'undefined'}
 
 var App = React.createClass({
   getInitialState: function() {

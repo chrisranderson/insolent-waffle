@@ -51,8 +51,10 @@ var HTMLEditor = React.createClass({
             lineNumbers: true,
             mode: "htmlmixed",
             theme: 'monokai',
-            autofocus: true,
-            indentUnit: 4
+            autofocus: this.props.focus,
+            indentUnit: 4,
+            // for emmet
+            profile: 'xhtml'
         };
 
         return(

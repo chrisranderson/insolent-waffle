@@ -45,6 +45,7 @@ var ExhibitList = React.createClass({
                 <Exhibit 
                     comment="This exhibit is to be used for submitted new exhibits."
                     collectionId={this.props.collectionId} 
+                    collectionName={this.props.collectionName}
                     new={true} 
                     style={showIf(this.state.proposing)} 
                     onSubmit={this.addExhibit}
