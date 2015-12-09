@@ -29,7 +29,7 @@ function addExhibit (req, res) {
     console.log(req.body.exhibit)
 
     
-    var exhibit = new Exhibit({code: req.body.code}).save(function(e, exhibit) {
+    var exhibit = new Exhibit({code: req.body.code, title: req.body.title}).save(function(e, exhibit) {
         var parentCollection = Collection.findOne({_id: req.params.id}, function (e, collection) {
 
             console.log(exhibit)

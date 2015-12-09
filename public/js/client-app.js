@@ -5,6 +5,7 @@ var Navbar = require('Navbar');
 var Home = require('./pages/Home');
 var Collection = require('./pages/Collection');
 window.globalCounter = 0;
+window.isUndefined = function (thing) {return typeof thing === 'undefined'}
 
 var App = React.createClass({
   render: function() {

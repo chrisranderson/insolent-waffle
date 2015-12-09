@@ -38,8 +38,8 @@ module.exports = {
     },
 
     // Use this if you're tired of slow compile times from webpack.
-    // devtool: 'cheap-source-map'
+    devtool: 'cheap-source-map'
 
     // Allows you to debug your original files rather than bundle.js
-    devtool: 'source-map'
+    // devtool: 'source-map'
 }
