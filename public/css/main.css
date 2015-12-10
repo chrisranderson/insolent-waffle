@@ -102,12 +102,34 @@
 ::-webkit-input-placeholder {color: rgba(255, 255, 255, 0.5); font-style: italic; } :-moz-placeholder { /* Firefox 18- */ color: rgba(255, 255, 255, 0.5); font-style: italic; } ::-moz-placeholder {  /* Firefox 19+ */ color: rgba(255, 255, 255, 0.5); font-style: italic; } :-ms-input-placeholder {color: rgba(255, 255, 255, 0.5); font-style: italic; }
 
 
+/* Login/Register Page */
 .login-div {
     color: white;
     text-align: center;
 }
 
+.login-div .nav-pills {
+    font-size: 36px;
+}
+
+.login-div .nav-pills a {
+    color: white;
+}
+
+.login-div .nav-pills>li.active>a, .login-div .nav-pills>li.active>a:focus, .login-div .nav-pills>li.active>a:hover {
+    color: white;
+    background-color: #6F8318;
+}
+
+.login-div .nav>li>a:focus, .login-div .nav>li>a:hover {
+    background-color: #788E16;
+}
+
 .login-div .searchbar {
     width: 50%;
     margin-bottom: 10px;
+}
+
+.login-div ul {
+    display: inline-block;
 }

@@ -12,8 +12,8 @@ var Login = React.createClass({
   // initial state
   getInitialState: function() {
     return {
-      // there was an error on logging in
-      error: false
+      login_error: false,
+      register_error: false
     };
 
   },
@@ -23,8 +23,8 @@ var Login = React.createClass({
     // prevent default browser submit
     event.preventDefault();
     // get data from form
-    var username = this.refs.username.value;
-    var password = this.refs.password.value;
+    var username = this.refs['login-username'].value;
+    var password = this.refs['login-password'].value;
     if (!username || !password) {
       return;
     }
@@ -33,9 +33,28 @@ var Login = React.createClass({
       // login callback
       if (!loggedIn)
         return this.setState({
-          error: true
+          login_error: true
         });
-      this.history.pushState(null, '/list');
+      this.history.pushState(null, '/');
+    }.bind(this));
+  },
+
+  register: function(event) {
+    event.preventDefault();
+    var username = this.refs['register-username'].value;
+    var password = this.refs['register-password'].value;
+    var name = this.refs['register-name'].value;
+
+    if (!username || !password) {
+      return;
+    }
+
+    auth.register(name, username, password, function(cb) {
+      if (!cb)
+        return this.setState({
+          register_error: true
+        });
+      this.history.pushState(null, '/');
     }.bind(this));
   },
 
@@ -43,15 +62,36 @@ var Login = React.createClass({
   render: function() {
     return (
       <div className='login-div'>
-          <h1>Login</h1>
-          <form className="form-vertical" onSubmit={this.login}>
-            <input className="searchbar" type="text" placeholder="Username" ref="username" autoFocus={true} /><br/>
-            <input className="searchbar" type="password" placeholder="Password" ref="password"/><br/>
-            <input className="submit-button" type="submit" value="Login" />
-            {this.state.error ? (
-               <div className="alert">Invalid username or password.</div>
-             ) : null}
-          </form>
+
+        <ul className="nav nav-pills">
+          <li className="active"><a data-toggle="tab" href="#login-tab">Login</a></li>
+          <li><a data-toggle="tab" href="#register-tab">Register</a></li>
+        </ul>
+
+        <div className="tab-content">
+          <div id="login-tab" className="tab-pane fade in active">
+            <form className="form-vertical" onSubmit={this.login}>
+              <input className="searchbar" type="text" placeholder="Username" ref="login-username" autoFocus={true} /><br/>
+              <input className="searchbar" type="password" placeholder="Password" ref="login-password"/><br/>
+              <input className="submit-button" type="submit" value="Login" />
+              {this.state.login_error ? (
+                 <div className="alert">Invalid username or password.</div>
+               ) : null}
+            </form>
+          </div>
+          <div id="register-tab" className="tab-pane fade">
+            <form className="form-vertical" onSubmit={this.register}>
+              <input className="searchbar" type="text" placeholder="Name" ref="register-name" autoFocus={true} /><br/>
+              <input className="searchbar" type="text" placeholder="Username" ref="register-username" autoFocus={true} /><br/>
+              <input className="searchbar" type="password" placeholder="Password" ref="register-password"/><br/>
+              <input className="submit-button" type="submit" value="Register" />
+              {this.state.register_error ? (
+                 <div className="alert">Invalid username.</div>
+               ) : null}
+            </form>
+          </div>
+        </div>
+
       </div>
     );
   }
