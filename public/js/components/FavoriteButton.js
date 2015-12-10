@@ -22,7 +22,7 @@ var FavoriteButton = React.createClass({
             active: !this.state.active
         })
 
-        this.props.onClick();
+        this.props.onClick(!this.state.active);
     },
 
     render: function() {

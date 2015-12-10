@@ -6,7 +6,7 @@ var HTMLEditor = require('./HTMLEditor')
 var styles = require('styles')
 var Input = require('Input')
 var FavoriteButton = require('FavoriteButton')
-
+var auth = require('')
 
 var Exhibit = React.createClass({
     getDefaultProps: function () {
@@ -31,6 +31,15 @@ var Exhibit = React.createClass({
         })
     },
 
+    // need a user and an exhibit id
+    favoriteClicked: function(favorited) {
+        if (favorited) {
+            api.addFavorite()
+        } else {
+            api.removeFavorite()
+        }
+
+    },
 
     render: function() {
         return (
@@ -43,7 +52,8 @@ var Exhibit = React.createClass({
                 <h4>
                     <FavoriteButton 
                         active={false} 
-                        style={showIf(this.props.new === false)}/>
+                        style={showIf(this.props.new === false)}
+                        onClick={this.favoriteClicked}/>
                     {this.props.exhibit.title}
                 </h4>
                 <HTMLEditor 
