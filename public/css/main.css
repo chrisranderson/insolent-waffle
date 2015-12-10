@@ -20,6 +20,14 @@
     border: none;
 }
 
+.navbar-default .navbar-brand, .navbar-default .navbar-nav>li>a {
+    color: white;
+}
+
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-nav>li>a:hover {
+    color: #5e5e5e;
+}
+
 .submit-button {
     background: #1f8a70;
     border: none;
