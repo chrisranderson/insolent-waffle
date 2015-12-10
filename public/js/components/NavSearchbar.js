@@ -4,7 +4,7 @@ var api = require('server-api');
 var Fuse = require('fuse.js')
 var SearchResults = require('./SearchResults');
 
-var Searchbar = React.createClass({
+var NavSearchbar = React.createClass({
     getInitialState: function () {
         return {
             value: '',
@@ -40,15 +40,13 @@ var Searchbar = React.createClass({
     render: function() {
 
         return (
-            <div className="col-md-offset-2 col-md-8">
-                <label className='search-label' htmlFor='query'>Search for any HTML element or CSS attribute</label>
-                <br/>
-                <input className="searchbar"
+            <div>
+                <input className="navsearchbar"
                     name='query'
                     autoFocus
                     type='text'
                     onChange={this.onChange}
-                    placeholder='e.g. "background" or "input"'
+                    placeholder='Search...'
                     value={this.state.value}
                     onKeyDown={this.refs.results?
                         this.refs.results.keyDown :
@@ -76,4 +74,4 @@ function fuzzyFindMatches(collections, query) {
     return fuse.search(query);
 }
 
-module.exports = Searchbar;
+module.exports = NavSearchbar;

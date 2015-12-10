@@ -26,12 +26,12 @@ var SearchResults = React.createClass({
             this.props.itemSelected(location);
         }
 
-        if (currentlyHighlighted !== 0 && 
+        if (currentlyHighlighted !== 0 &&
             (event.keyCode == left || event.keyCode == up)) {
             currentlyHighlighted--;
         }
 
-        if (currentlyHighlighted !== 9 && 
+        if (currentlyHighlighted !== 9 &&
             (event.keyCode == right || event.keyCode == down)) {
             currentlyHighlighted++;
         }
@@ -47,13 +47,14 @@ var SearchResults = React.createClass({
             <div>
                 {this.props.results.slice(0, 10).map((result, index) => {
                     return (
-                        <Link 
-                            to={`/collections/${result._id}`} 
-                            className={`search-result ${this.state.highlighted === index ? 
+                        <Link
+                            onClick={this.props.collapseResults}
+                            to={`/collections/${result._id}`}
+                            className={`search-result ${this.state.highlighted === index ?
                                 "highlighted-result" :
                                 ""
-                            }`}> 
-                            {highlightMatches(result.title, this.props.query)} 
+                            }`}>
+                            {highlightMatches(result.title, this.props.query)}
                         </Link>
                     )
                 })}
@@ -67,10 +68,10 @@ function highlightMatches(sample, query) {
     var charactersToMatch = _.uniq(query.split(''));
 
     var output = sample.split('').map(function(character, index) {
-        return _.contains(charactersToMatch, character)? 
-                <span className="highlighted-character" key={index}>{character}</span> : 
+        return _.contains(charactersToMatch, character)?
+                <span className="highlighted-character" key={index}>{character}</span> :
                 <span key={index}>{character}</span>
-    });  
+    });
 
     return output;
 }

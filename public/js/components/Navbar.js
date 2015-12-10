@@ -4,6 +4,8 @@ var auth = require("auth.js");
 var React  = require('react');
 var {Link} = require('react-router')
 
+var NavSearchbar = require('NavSearchbar');
+
 var Navbar = React.createClass({
 
     // logout the user and redirect to home page
@@ -29,6 +31,9 @@ var Navbar = React.createClass({
                             <ul className="nav navbar-nav">
                                 <li>
                                     {(!auth.loggedIn()) ? (<Link to="login">Log in</Link>) : (<a href="#" onClick={this.logout}>Log out</a>)}
+                                </li>
+                                <li>
+                                    <NavSearchbar/>
                                 </li>
                             </ul>
                         </div>
