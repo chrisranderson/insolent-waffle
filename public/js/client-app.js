@@ -6,6 +6,8 @@ var Home = require('./pages/Home');
 var Collection = require('./pages/Collection');
 var Login = require('./pages/Login');
 var auth = require("./auth.js");
+var Favorites = require('./pages/Favorites')
+window.print = console.log
 window.globalCounter = 0;
 window.isUndefined = function (thing) {return typeof thing === 'undefined'}
 
@@ -40,6 +42,7 @@ var routes = (
         <Route name="app" path="/" component={App}>
           <IndexRoute component={Home} />
           <Route path="collections/:id" component={Collection}/>
+          <Route path="favorites" component={Favorites} />
           <Route path="login" component={Login}/>
           <Route path="*" component={Home}/>
         </Route>

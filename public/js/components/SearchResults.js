@@ -10,6 +10,7 @@ var SearchResults = React.createClass({
     getInitialState: function() {
         return {
             highlighted: 0,
+            results: this.props.results
         }
     },
 
@@ -41,10 +42,11 @@ var SearchResults = React.createClass({
         })
     },
 
+
     render: function() {
         return (
 
-            <div>
+            <div style={this.props.style}>
                 {this.props.results.slice(0, 10).map((result, index) => {
                     return (
                         <Link

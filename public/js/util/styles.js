@@ -4,7 +4,7 @@ var styles = {
     showIf: function (condition) {
         if (condition) {
             return {
-                display: 'inherit'
+                display: 'initial'
             }
         } else {
             return {

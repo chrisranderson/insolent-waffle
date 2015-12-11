@@ -6,7 +6,7 @@ var HTMLEditor = require('./HTMLEditor')
 var styles = require('styles')
 var Input = require('Input')
 var FavoriteButton = require('FavoriteButton')
-var auth = require('')
+var auth = require('auth')
 
 var Exhibit = React.createClass({
     getDefaultProps: function () {
@@ -20,7 +20,8 @@ var Exhibit = React.createClass({
 
     getInitialState: function () {
         return {
-            id: ++window.globalCounter
+            id: ++window.globalCounter,
+            submitButtonText: "submit this exhibit"
         }
     },
 
@@ -29,16 +30,24 @@ var Exhibit = React.createClass({
             code: this.refs.code.getCode(),
             title: this.refs.title.value()
         })
+
+        this.setState({
+            submitButtonText: "Submitted!"
+        })
     },
 
     // need a user and an exhibit id
     favoriteClicked: function(favorited) {
         if (favorited) {
-            api.addFavorite()
-        } else {
-            api.removeFavorite()
-        }
+            api.addFavorite(auth.getUsername(), this.props.exhibit._id, function () {
 
+
+            })
+        } else {
+            api.removeFavorite(auth.getUsername(), this.props.exhibit._id, function (){
+
+            })
+        }
     },
 
     render: function() {
@@ -65,7 +74,7 @@ var Exhibit = React.createClass({
                     className="submit-button"
                     onClick={this.submit} 
                     style={showIf(this.props.new === true)}>
-                    Submit this exhibit
+                    {this.state.submitButtonText}
                 </button>
             </div>
         );

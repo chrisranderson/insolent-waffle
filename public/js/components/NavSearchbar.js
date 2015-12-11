@@ -38,9 +38,15 @@ var NavSearchbar = React.createClass({
     },
 
     render: function() {
+        var style = {
+            position: 'absolute',
+            zIndex: 1,
+            boxShadow: '0px 3px 10px rgba(0, 0, 0, 0.49)',
+            width: 153
+        }
 
         return (
-            <div>
+            <div >
                 <input className="navsearchbar"
                     name='query'
                     autoFocus
@@ -54,6 +60,7 @@ var NavSearchbar = React.createClass({
                     }
                 />
                 <SearchResults
+                    style={style}
                     ref="results"
                     query={this.state.value}
                     results={this.state.matches}
@@ -64,6 +71,7 @@ var NavSearchbar = React.createClass({
         );
     }
 });
+
 
 function fuzzyFindMatches(collections, query) {
     var fuse = new Fuse(collections, {

@@ -16,6 +16,7 @@ var userSchema = new Schema({
   name: String,
   username: {type: String, index: true, unique: true},
   password_hash: String,
+  favorites: [{type: mongoose.Schema.Types.ObjectId, ref: 'Exhibit'}]
 });
 
 // hash the password

@@ -23,8 +23,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 ////////////////////
 ////////////////////
 
+app.use('/api/favorites',   require('./routes/favorites'))
 app.use('/api/collections', require('./routes/collections'))
-app.use('/api/users', require('./routes/users'))
+app.use('/api/users',       require('./routes/users'))
 
 ////////////////////
 ////////////////////

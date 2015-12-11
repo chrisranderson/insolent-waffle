@@ -30,7 +30,14 @@ var Navbar = React.createClass({
                         <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul className="nav navbar-nav">
                                 <li>
-                                    {(!auth.loggedIn()) ? (<Link to="login">Log in</Link>) : (<a href="#" onClick={this.logout}>Log out {auth.getUsername()}</a>)}
+                                    {(!auth.loggedIn()) ? 
+                                        (<Link to="login">log in</Link>) : 
+                                        (<a href="#" onClick={this.logout}>log out {auth.getUsername()}</a>)}
+                                </li>
+                                <li>
+                                    {auth.loggedIn() ?
+                                        (<Link to="favorites">favorites</Link>) :
+                                        (null)}
                                 </li>
                                 <li>
                                     <NavSearchbar/>

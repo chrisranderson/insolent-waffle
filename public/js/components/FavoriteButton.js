@@ -1,5 +1,6 @@
 'use strict';
 var React  = require('react');
+var auth = require('auth');
 
 // glyphicon glyphicon-star
 // glyphicon glyphicon-star-empty
@@ -27,6 +28,11 @@ var FavoriteButton = React.createClass({
 
     render: function() {
         var icon = this.state.active? "glyphicon-star" : "glyphicon-star-empty";
+        
+        if (!auth.loggedIn()) {
+            return null;
+        }
+        
         return (
             <span 
                 style={this.props.style}
